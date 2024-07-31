@@ -1,0 +1,233 @@
+:root {
+	--primary-color: #6cb9ab;
+	--secondary-color: #64099b;
+	--black-color: #1d1c1d;
+	--font-family: 'Inter', sans-serif;
+	--width-content: 1300px;
+	--padding-content-pc: 42px;
+	--padding-content-mobile: 16px;
+	--bg-card: #f2f9f7;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/inter-v13-cyrillic_latin-regular.woff2') format('woff2');
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-family);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 124%;
+	color: var(--black-color);
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.container {
+	max-width: calc(var(--width-content) + var(--padding-content-pc) * 2);
+	margin: 0 auto;
+	padding: 0 var(--padding-content-pc);
+}
+
+.header {
+	padding: 0 24px;
+	width: 100%;
+	position: absolute;
+	top: 24px;
+	left: 50%;
+	transform: translatex(-50%);
+	color: #fff;
+}
+.header__container {
+	max-width: 1392px;
+	background: rgba(108, 185, 171, 0.7);
+	backdrop-filter: blur(60px);
+	padding: 12px 46px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header__logo-link a {
+	font-size: 0;
+}
+.header__menu {
+	display: flex;
+	align-items: center;
+	gap: 50px;
+}
+.header__menu-link:hover {
+	color: var(--secondary-color);
+}
+.header__cart-link {
+	width: 28px;
+	height: 28px;
+	color: var(--secondary-color);
+	font-size: 12px;
+	text-align: center;
+	background-image: url('../image/bag.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	padding: 6px 4px 3px;
+}
+
+.promo {
+	background-color: var(--primary-color);
+}
+.promo__container {
+	padding-top: 210px;
+	padding-bottom: 80px;
+	background-image: url('../image/bg-coffee.png');
+	background-position: right 113px bottom 0;
+	background-repeat: no-repeat;
+}
+.promo__title {
+	font-size: 88px;
+	line-height: 110%;
+	color: #fff;
+	margin-bottom: 60px;
+	margin-top: 0;
+	max-width: 800px;
+}
+.promo__link {
+	border: 1px solid #fff;
+	border-radius: 4px;
+	padding: 16px 24px;
+	color: #fff;
+	display: inline-block;
+}
+
+.products {
+	padding: 100px 0;
+}
+
+.products__title {
+	font-size: 54px;
+	line-height: 110%;
+	color: var(--secondary-color);
+	margin-bottom: 32px;
+	margin-top: 0;
+}
+.products__list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+.product {
+	background-color: var(--bg-card);
+	border-radius: 6px;
+	font-size: 0;
+	min-height: 600px;
+	display: flex;
+	flex-direction: column;
+	color: var(--black-color);
+}
+.product__image {
+	border-radius: 6px 6px 0 0;
+	width: 100%;
+}
+.product__content {
+	padding: 40px 24px 24px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+.product__title {
+	font-size: 24px;
+	margin-top: 0;
+	margin-bottom: 4px;
+	flex-grow: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.product__price {
+	font-size: 20px;
+	margin: 0;
+}
+
+.footer {
+	background-color: var(--primary-color);
+	padding: 60px 0;
+	color: #fff;
+}
+.footer__container {
+	display: grid;
+	gap: 38px;
+	grid-template-columns: repeat(2, max-content);
+	justify-content: space-between;
+}
+.footer__menu {
+	display: flex;
+	gap: 50px;
+}
+.footer__menu-link {
+	&:hover {
+		color: var(--secondary-color);
+	}
+}
+.footer__info {
+	font-size: 16px;
+}
+.footer__copyright {
+	margin: 0 0 16px 0;
+}
+.footer__description {
+	margin: 0 0 3px 0;
+}
+.footer__devs {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+.footer__dev-link {
+	&:hover {
+		color: var(--secondary-color);
+	}
+}
+.footer__contacts {
+	display: flex;
+	flex-direction: column;
+}
+.footer__email {
+	margin-bottom: 16px;
+	&:hover {
+		color: var(--secondary-color);
+	}
+}
+.footer__social {
+	display: flex;
+	gap: 12px;
+}
