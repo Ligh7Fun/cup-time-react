@@ -1,15 +1,17 @@
+import { Link } from 'react-router-dom'
+
 function Header() {
 	return (
 		<>
 			<header className='header'>
 				<div className='container header__container'>
-					<a className='header__logo-link'>
+					<Link to='/' className='header__logo-link'>
 						<img
 							className='header__logo'
 							src='./image/logo.svg'
 							alt='Логотип Cup Time'
 						/>
-					</a>
+					</Link>
 
 					<nav className='header__nav'>
 						<ul className='header__menu'>
@@ -41,9 +43,9 @@ function Header() {
 						</ul>
 					</nav>
 					<div className='mobile'>
-						<a href='cart.html' className='header__cart-link'>
+						<Link to='/cart' className='header__cart-link'>
 							6
-						</a>
+						</Link>
 						<button href='#' className='header__mobile-menu'></button>
 					</div>
 				</div>
