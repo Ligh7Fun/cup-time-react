@@ -40,10 +40,12 @@ function Header() {
 							</li>
 						</ul>
 					</nav>
-
-					<a href='cart.html' className='header__cart-link'>
-						6
-					</a>
+					<div className='mobile'>
+						<a href='cart.html' className='header__cart-link'>
+							6
+						</a>
+						<button href='#' className='header__mobile-menu'></button>
+					</div>
 				</div>
 			</header>
 		</>
