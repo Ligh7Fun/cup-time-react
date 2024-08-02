@@ -61,9 +61,7 @@ function ProductModal({ isOpen, onRequestClose, data }) {
 						<button className='cart__order-button'>Добавить</button>
 					</div>
 				</div>
-				<button onClick={onRequestClose} className='modal__close'>
-					x
-				</button>
+				<button onClick={onRequestClose} className='modal__close'></button>
 			</div>
 		</Modal>
 	)
