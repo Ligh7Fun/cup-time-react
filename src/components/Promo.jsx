@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Promo() {
 	return (
 		<>
@@ -5,10 +7,9 @@ function Promo() {
 				<div className='container'>
 					<div className='promo__container'>
 						<h1 className='promo__title'>Попробуй новый вкус Арабики</h1>
-
-						<a className='promo__link' href='#'>
+						<Link className='promo__link' to='/products?category=coffee'>
 							Перейти к кофе
-						</a>
+						</Link>
 					</div>
 				</div>
 			</section>

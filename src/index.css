@@ -110,6 +110,10 @@ input[type='number'] {
 .header__menu-link:hover {
 	color: var(--secondary-color);
 }
+.header__menu-link.active {
+	color: var(--secondary-color);
+}
+
 .header__cart-link {
 	width: 28px;
 	height: 28px;
@@ -221,6 +225,7 @@ input[type='number'] {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
 .product__price {
@@ -367,6 +372,7 @@ input[type='number'] {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
 .cart-item__quantity {
@@ -476,6 +482,77 @@ input[type='number'] {
 	background-color: #64099b;
 }
 
+.modal-content {
+	position: relative;
+	display: flex;
+	max-width: 744px;
+	align-items: center;
+}
+.modal__image {
+	width: 100%;
+	height: 100%;
+
+	max-width: 336px;
+}
+.modal__product {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0;
+	padding: 40px 24px 24px 24px;
+}
+.modal__product-title {
+	font-size: 24px;
+	font-weight: 400;
+	margin-top: 0;
+	margin-bottom: 12px;
+	flex-grow: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.modal__product-price {
+	font-size: 20px;
+	font-weight: 400;
+	margin: 0 0 52px 0;
+}
+.modal__product-additional {
+	margin-bottom: 50px;
+}
+.modal-quantity {
+	margin-bottom: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal__product-additional-item {
+	display: flex;
+	justify-content: space-between;
+}
+.modal__product-additional-key {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 124%;
+	color: #b8b8b8;
+}
+.modal__product-additional-value {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 124%;
+	color: var(--black-color);
+}
+.modal__close {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	top: 20px;
+	right: 25px;
+	opacity: 0.5;
+}
 @media (max-width: 1240px) {
 	.header {
 		padding: 0 20px;
@@ -603,8 +680,9 @@ input[type='number'] {
 		font-size: 16px;
 		margin-bottom: 16px;
 		grid-template-areas: 'title total button';
-		justify-content: start;
-		grid-template-columns: 50px 1fr auto;
+		/* grid-template-columns: 50px 1fr auto; */
+		grid-template-columns: min-content 1fr min-content;
+		gap: 6px;
 	}
 	.cart__summary-title {
 		margin: 0;
@@ -625,6 +703,7 @@ input[type='number'] {
 	}
 	.cart-item__price {
 		font-size: 16px;
+		margin: 0;
 	}
 	.order__title {
 		font-size: 36px;
