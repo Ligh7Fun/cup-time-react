@@ -1,5 +1,7 @@
 import Modal from 'react-modal'
 import { API_URL } from '../const'
+import { useState } from 'react'
+import { useCart } from '../context/CartContext'
 
 const customStyles = {
 	content: {
@@ -17,9 +19,28 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 function ProductModal({ isOpen, onRequestClose, data }) {
+	const { addToCart } = useCart()
+
+	const [quantity, setQuantity] = useState(1)
+
 	if (!data) {
 		return null
 	}
+
+	const handleAddToCart = () => {
+		addToCart(data, quantity)
+		onRequestClose()
+		setQuantity(1)
+	}
+	const handleDecreaseQuantity = () => {
+		if (quantity > 1) {
+			setQuantity(quantity - 1)
+		}
+	}
+	const handleIncreaseQuantity = () => {
+		setQuantity(quantity + 1)
+	}
+
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -49,16 +70,23 @@ function ProductModal({ isOpen, onRequestClose, data }) {
 					</ul>
 
 					<div className='cart-item__quantity modal-quantity'>
-						<button className='cart-item__quantity-button minus'></button>
+						<button
+							onClick={handleDecreaseQuantity}
+							className='cart-item__quantity-button minus'
+						></button>
 						<input
 							type='number'
-							value='1'
+							value={quantity}
+							readOnly
 							className='cart-item__quantity-input'
 						/>
-
-						<button className='cart-item__quantity-button plus'></button>
-
-						<button className='cart__order-button'>Добавить</button>
+						<button
+							onClick={handleIncreaseQuantity}
+							className='cart-item__quantity-button plus'
+						></button>
+						<button onClick={handleAddToCart} className='cart__order-button'>
+							Добавить
+						</button>
 					</div>
 				</div>
 				<button onClick={onRequestClose} className='modal__close'></button>

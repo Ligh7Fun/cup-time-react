@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
 
 function Header() {
+	const { cart } = useCart()
 	const location = useLocation()
 	const getActiveClass = category => {
 		const currentCategory = new URLSearchParams(location.search).get('category')
@@ -65,7 +67,7 @@ function Header() {
 					</nav>
 					<div className='mobile'>
 						<Link to='/cart' className='header__cart-link'>
-							6
+							{cart ? cart.length : 0}
 						</Link>
 						<button href='#' className='header__mobile-menu'></button>
 					</div>

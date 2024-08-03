@@ -3,6 +3,7 @@ import Product from './Product'
 import { useEffect } from 'react'
 import { useProducts } from '../context/ProductContext'
 import { useSearchParams } from 'react-router-dom'
+import SkeletonLoader from './SkeletonLoader'
 
 function Products() {
 	const [searchParams] = useSearchParams()
@@ -18,7 +19,6 @@ function Products() {
 	useEffect(() => {
 		setCategory(category)
 	}, [category, setCategory])
-	console.log(category)
 	return (
 		<>
 			<section className='products'>
@@ -26,9 +26,13 @@ function Products() {
 					<h2 className='products__title'>{titleCategory[category]}</h2>
 
 					<ul className='products__list'>
-						{products.map(product => (
-							<Product key={product.id} data={product} />
-						))}
+						{products.length ? (
+							products.map(product => (
+								<Product key={product.id} data={product} />
+							))
+						) : (
+							<SkeletonLoader />
+						)}
 					</ul>
 				</div>
 			</section>
