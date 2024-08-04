@@ -36,7 +36,6 @@ function Cart() {
 			}
 
 			const result = await response.json()
-			console.log(result)
 			setOrderStatus('success')
 			setOrderId(result.order.id)
 			clearCart()

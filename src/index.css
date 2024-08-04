@@ -38,6 +38,7 @@ body {
 	font-size: 20px;
 	line-height: 124%;
 	color: var(--black-color);
+	min-width: 320px;
 }
 
 ul {
@@ -127,33 +128,25 @@ input[type='number'] {
 	padding: 6px 4px 3px;
 }
 
-.header__mobile-menu {
-	width: 28px;
-	height: 28px;
-	color: var(--secondary-color);
-	font-size: 12px;
-	text-align: center;
-	font-weight: 400;
-	background-image: url('../image/menu.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	padding: 6px 4px 3px;
-	display: none;
-	border: none;
-	background-color: transparent;
+.header__control {
+	display: flex;
+	align-items: center;
+	gap: 16px;
 }
 
-.mobile {
-	display: flex;
-	gap: 16px;
-	align-items: center;
-	padding-right: 16px;
+.header__close-btn {
+	display: none;
+}
+
+.header__burger {
+	display: none;
 }
 
 .promo {
 	background-color: var(--primary-color);
 }
 .promo__container {
+	min-height: 600px;
 	padding-top: 215px;
 	padding-bottom: 80px;
 	background-image: url('../image/bg-coffee.png');
@@ -198,8 +191,8 @@ input[type='number'] {
 .product {
 	background-color: var(--bg-card);
 	border-radius: 6px;
+	overflow: hidden;
 	font-size: 0;
-	min-height: 600px;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -214,13 +207,14 @@ input[type='number'] {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
+	gap: 4px;
 }
 .product__title {
 	font-size: 24px;
+	height: 62px;
 	font-weight: 400;
 	margin-top: 0;
-	margin-bottom: 4px;
-	flex-grow: 1;
+	margin-bottom: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -614,6 +608,7 @@ input[type='number'] {
 		padding-bottom: 60px;
 		background-position: right 48px bottom 0;
 		background-size: 229px auto;
+		min-height: 484px;
 	}
 	.product {
 		min-height: 450px;
@@ -658,7 +653,6 @@ input[type='number'] {
 	}
 	.products__title {
 		font-size: 36px;
-		margin-bottom: 24px;
 	}
 	.products {
 		padding-top: 80px;
@@ -667,12 +661,16 @@ input[type='number'] {
 	.product {
 		min-height: 360px;
 	}
+	.product__content {
+		gap: 24px;
+	}
 	.products__list {
 		grid-template-columns: repeat(auto-fill, minmax(217px, 1fr));
 		gap: 16px;
 	}
 	.product__title {
 		font-size: 20px;
+		height: 48px;
 	}
 	.product__price {
 		font-size: 16px;
@@ -775,12 +773,46 @@ input[type='number'] {
 		padding: 8px 16px;
 		gap: 16px;
 	}
-	.header__mobile-menu {
-		display: block;
-	}
 
 	.header__nav {
 		display: none;
+	}
+
+	.header__burger {
+		display: block;
+		width: 28px;
+		height: 28px;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+	}
+
+	.header__nav.active {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		overflow: hidden;
+		inset: 0;
+		height: 100vh;
+		background-color: #6cb9ab;
+	}
+
+	.header__menu {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.header__close-btn {
+		position: absolute;
+		top: 20px;
+		right: 16px;
+		display: block; /* Показать кнопку-бургер на мобильных устройствах */
+		width: 28px;
+		height: 28px;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
 	}
 
 	.promo__container {
