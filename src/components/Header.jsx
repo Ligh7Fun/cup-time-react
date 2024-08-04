@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { useProducts } from '../context/ProductContext'
 
 function Header() {
 	const { cart } = useCart()
+	const { categories } = useProducts()
 	const location = useLocation()
 	const getActiveClass = category => {
 		const currentCategory = new URLSearchParams(location.search).get('category')
@@ -23,54 +25,23 @@ function Header() {
 
 					<nav className='header__nav'>
 						<ul className='header__menu'>
-							<li className='header__menu-item'>
-								<Link
-									to='/products?category=tea'
-									className={`header__menu-link ${getActiveClass('tea')}`}
-								>
-									Чай
-								</Link>
-							</li>
-							<li className='header__menu-item'>
-								<Link
-									to='/products?category=coffee'
-									className={`header__menu-link ${getActiveClass('coffee')}`}
-								>
-									Кофе
-								</Link>
-							</li>
-							<li className='header__menu-item'>
-								<Link
-									to='/products?category=teapots'
-									className={`header__menu-link ${getActiveClass('teapots')}`}
-								>
-									Чайники
-								</Link>
-							</li>
-							<li className='header__menu-item'>
-								<Link
-									to='/products?category=cezves'
-									className={`header__menu-link ${getActiveClass('cezves')}`}
-								>
-									Турки
-								</Link>
-							</li>
-							<li className='header__menu-item'>
-								<Link
-									to='/products?category=other'
-									className={`header__menu-link ${getActiveClass('other')}`}
-								>
-									Прочее
-								</Link>
-							</li>
+							{Object.entries(categories).map(([key, value]) => (
+								<li className='header__menu-item' key={key}>
+									<Link
+										to={`/products?category=${key}`}
+										className={`header__menu-link ${getActiveClass(key)}`}
+									>
+										{value}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</nav>
-					<div className='mobile'>
-						<Link to='/cart' className='header__cart-link'>
-							{cart ? cart.length : 0}
-						</Link>
-						<button href='#' className='header__mobile-menu'></button>
-					</div>
+
+					<Link to='/cart' className='header__cart-link'>
+						{/* {cart ? cart.length : 0} */}
+						{cart ? cart.reduce((acc, item) => acc + item.quantity, 0) : 0}
+					</Link>
 				</div>
 			</header>
 		</>
